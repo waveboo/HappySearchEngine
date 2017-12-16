@@ -8,6 +8,7 @@ import Search from './components/Search'
 import VueResource from 'vue-resource'
 import store from './store'
 
+import 'jquery'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
