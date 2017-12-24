@@ -1,0 +1,12 @@
+pymongo
+pyyaml
+requests
+demjson
+jieba
+Cython
+beautifulsoup4
+fasttext
+numpy
+flask
+scipy
+sklearn

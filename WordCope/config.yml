@@ -1,0 +1,24 @@
+mongo:
+  host: localhost
+  db: typeData
+  port: 27017
+
+
+types:
+  - 'ai'
+  - 'cloud'
+  - 'blockchain'
+  - 'db'
+  - 'career'
+  - 'game'
+  - 'fund'
+  - 'avi'
+  - 'web'
+  - 'mobile'
+  - 'lang'
+  - 'arch'
+  - 'ops'
+  - 'iot'
+  - 'engineering'
+  - 'sec'
+  - 'other'
