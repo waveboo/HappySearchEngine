@@ -2,6 +2,7 @@ pymongo
 pyyaml
 requests
 demjson
+flask_cors
 jieba
 Cython
 beautifulsoup4

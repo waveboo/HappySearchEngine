@@ -18,6 +18,20 @@ class DB(object):
         result = self.db[table].insert_one(query)
         return result.inserted_id
 
+    def saveabb(self, table, abb, whl):
+        query = {'_abb':abb, '_whl':whl}
+        result = self.db[table].insert_one(query)
+        return result.inserted_id
+
+    def findabb(self,abb):
+        result = self.db['ABB'].find({"_abb":abb})
+        i = 0
+        for tmp in result:
+            return tmp['_whl']
+        else:
+            return None
+
+
     def delete(self, table, sentence):
         pass
 
@@ -37,4 +51,4 @@ class DB(object):
 
 if __name__ == '__main__':
     db = DB()
-    db.get_sentence('ai')
+    db.findabb('ABC')

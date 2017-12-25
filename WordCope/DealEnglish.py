@@ -6,7 +6,8 @@ sys.setdefaultencoding('UTF-8')
 
 class dealCode(object):
     def __init__(self):
-        self.end = [',','.','!','?','\'','\"','，','。','？','！','.',' ','\n']
+        # coding: utf-8
+        self.end = [',','!','?','\'','\"','，','。','？','！','.',' ','\n']
 
     def is_chinese(self, uchar):
         """判断一个unicode是否是汉字"""
@@ -40,8 +41,16 @@ class dealCode(object):
         return False
 
 if __name__ == '__main__':
-    a =dealCode()
-    if(a.is_end('#')):
-        print 1
-    if (a.is_end(',')):
-        print 2
+    Abbs = list()
+    Whls = list()
+    f = open('suoxie.txt', 'r')
+    while True:
+        lines = f.readline()  # 整行读取数据
+        Abb = get_slots()[0]
+        for i in range(0, len(lines)):
+            if(not dealCode().is_chinese(lines[i])):
+                lines.replace(lines[i],'')
+        print Abb,lines
+        Abbs.append(Abb)
+        Whls.append(lines)
+        pass
