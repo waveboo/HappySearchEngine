@@ -5,6 +5,7 @@ from sklearn import tree
 import numpy as np
 import pickle
 from tools import get_vec
+from tools import dict_update
 from tools import get_slots
 from TrainData import DB
 import config
@@ -43,7 +44,7 @@ for word in words:
     f.write(word + '\n')
 f.close()
 
-requests.post('http://localhost:8888/dict')
+dict_update()
 
 for record, label in zip(train_data, train_label):
     print record, label

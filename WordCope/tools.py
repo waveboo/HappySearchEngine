@@ -2,6 +2,7 @@
 
 import requests
 from DealEnglish import dealCode
+from TrainData import DB
 
 import sys
 reload(sys)
@@ -19,6 +20,9 @@ def get_vec(sentence):
     r = requests.post(wordmodel_server_url, params)
     return r.json()['vec']
 
+def dict_update():
+    r = requests.post(wordmodel_server_url + 'dict')
+
 def get_slots(sentence):
     code = dealCode()
     dict = []
@@ -35,3 +39,20 @@ def get_slots(sentence):
         else:
             pass
     return dict
+
+def saveABB():
+    db = DB()
+    f = open('DataSource/suoxie.txt', 'r')
+    while True:
+        lines = f.readline()  # 整行读取数据
+        lines = unicode(lines)
+        if(len(get_slots(lines))):
+           Abb = get_slots(lines)[0]
+        else:
+            break
+        for i in range(0, len(lines)):
+            if(not dealCode().is_chinese(lines[i])):
+                lines = lines.replace(lines[i]," ")
+        lines = lines.strip()
+        db.saveabb('ABB',Abb, lines)
+    f.close()
