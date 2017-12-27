@@ -16,16 +16,25 @@ def hello_world():
 @app.route('/search', methods=['GET','POST'])
 def search():
     searchKey = request.get_json()['searchKey']
-    print searchKey
-    type = Analyse().comprehend(searchKey)
-    tmp = StartCope(searchKey)
-    Answers = dict()
-    temp = tmp.cope(type)
-    for i in range(0,len(temp)):
-        Answers[str(i)] = json.dumps(temp[i])
-    print Answers
-    print json.dumps(Answers)
-    return json.dumps(Answers)
+    get = searchKey.strip()
+    if(not len(get)):
+        return None
+    else:
+        print get
+        pattern = request.get_json()['pattern']
+        tmp = StartCope(searchKey)
+        Answers = dict()
+        if (pattern == 1):
+            type = Analyse().comprehend(searchKey)
+        else:
+            type = -1
+        temp = tmp.cope(type)
+        for i in range(0, len(temp)):
+            Answers[str(i)] = json.dumps(temp[i])
+        print Answers
+        print json.dumps(Answers)
+        return json.dumps(Answers)
+
 
 if __name__ == '__main__':
     app.run(host = '0.0.0.0')

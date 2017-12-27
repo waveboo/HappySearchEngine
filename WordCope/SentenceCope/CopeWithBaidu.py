@@ -21,7 +21,8 @@ class StartCope(object):
         self.sentence = self.slotscope.slotsCope()
 
         self.advancedcope.set_sentence(self.sentence)
-        self.advancedcope.addIndex(type)
+        if(not(type == -1)):
+            self.advancedcope.addIndex(type)
         self.advancedcope.moveADS()
         self.sentence = self.advancedcope.Baidurepalce()
 
